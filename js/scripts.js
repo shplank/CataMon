@@ -21,5 +21,5 @@ let pokemonList = [
 ];
 
 for (let i = 0; i < pokemonList.length; i++){
-	document.write(pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types);
+	document.write('<p>' + pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types + '</p>');
 }
