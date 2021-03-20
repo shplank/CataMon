@@ -19,3 +19,7 @@ let pokemonList = [
   { name: "Pidgeotto", height: 1.1, types: ["flying", "normal"]},
   { name: "Pidgeot", height: 1.5, types: ["flying", "normal"]}
 ];
+
+for (let i = 0; i < pokemonList.length; i++){
+	document.write(pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types);
+}
