@@ -20,6 +20,10 @@ let pokemonList = [
   { name: "Pidgeot", height: 1.5, types: ["flying", "normal"]}
 ];
 
-for (let i = 0; i < pokemonList.length; i++){
+for (let i = 0; i < pokemonList.length; i++) {
+	if (pokemonList.height > 1.9) {
+			document.write('<p>' + pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types + ' Wow, that\'s big!</p>');
+    } else {
 	document.write('<p>' + pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types + '</p>');
+    }
 }
