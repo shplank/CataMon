@@ -20,7 +20,7 @@ let pokemonList = [
   { name: "Pidgeot", height: 1.5, types: ["flying", "normal"]}
 ];
 
-//below is loop version 2.0
+/* below is loop version 2.0 (not being used)
 
 for (let i = 0; i < pokemonList.length; i++) {
 	if (pokemonList[i].height > 1.9) {
@@ -30,7 +30,10 @@ for (let i = 0; i < pokemonList.length; i++) {
     }
 }
 
-/* below is loop version 1.0
+*/
+
+// below is loop version 1.0 (in use)
+
 for (let i = 0; i < pokemonList.length; i++) {
 	if (pokemonList[i].height > 1.9) {
 		document.write('<p>' + pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types + ' (Wow, that\'s big!)</p>');
@@ -38,4 +41,3 @@ for (let i = 0; i < pokemonList.length; i++) {
 	document.write('<p>' + pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types + '</p>');
     }
 }
-*/
