@@ -32,7 +32,7 @@ for (let i = 0; i < pokemonList.length; i++) {
 
 */
 
-// below is loop version 1.0 (in use)
+/* below is loop version 1.0 (not being used)
 
 for (let i = 0; i < pokemonList.length; i++) {
 	if (pokemonList[i].height > 1.9) {
@@ -41,3 +41,15 @@ for (let i = 0; i < pokemonList.length; i++) {
 	document.write('<p>' + pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types.join(', ') + '</p>');
     }
 }
+
+*/
+
+// below is the forEach version (in use)
+
+pokemonList.forEach(function(list) {
+	if (list.height > 1.9) {
+		document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + ' (Wow, that\'s big!)</p>');
+    } else {
+	document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + '</p>');
+    }
+});
