@@ -37,11 +37,9 @@ let pokemonRepository = (function () {
   };
 })();
 
-pokemonRepository.getAll();
+// below is the forEach loop (in use)
 
-// below is the forEach loop version (in use)
-
-pokemonList.forEach(function(list) {
+pokemonRepository.getAll.forEach(function(list) {
   if (list.height > 1.9) {
     document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + ' (Wow, that\'s big!)</p>');
   } else {
