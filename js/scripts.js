@@ -62,13 +62,8 @@ for (let i = 0; i < pokemonList.length; i++) {
 
 */
 
-pokemonList.forEach(function(list) {
-	if (list.height > 1.9) {
-document.write(pokemonRepository.getAll('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + ' (Wow, that\'s big!)</p>'));
-    } else {
-	  document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + '</p>');
-    }
-});
+
+document.write(pokemonRepository.getAll() );
 
 /* below is the forEach version (in use)
 
