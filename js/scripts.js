@@ -37,41 +37,14 @@ let pokemonRepository = (function () {
   };
 })();
 
+pokemonRepository.getAll();
 
-/* below is loop version 2.0 (not being used)
-
-for (let i = 0; i < pokemonList.length; i++) {
-	if (pokemonList[i].height > 1.9) {
-		document.write(`${pokemonList[i].name} / Height: ${pokemonList[i].height} / Types: ${pokemonList[i].types} (Wow, that's big!)`);
-    } else {
-	document.write(`${pokemonList[i].name} / Height: ${pokemonList[i].height} / Types: ${pokemonList[i].types}`);
-    }
-}
-
-*/
-
-/* below is loop version 1.0 (not being used)
-
-for (let i = 0; i < pokemonList.length; i++) {
-	if (pokemonList[i].height > 1.9) {
-		document.write('<p>' + pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types.join(', ') + ' (Wow, that\'s big!)</p>');
-    } else {
-	document.write('<p>' + pokemonList[i].name + ' / Height: ' + pokemonList[i].height + ' / Types: ' + pokemonList[i].types.join(', ') + '</p>');
-    }
-}
-
-*/
-
-
-document.write(pokemonRepository.getAll() );
-
-/* below is the forEach version (in use)
+// below is the forEach loop version (in use)
 
 pokemonList.forEach(function(list) {
-	if (list.height > 1.9) {
-	  document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + ' (Wow, that\'s big!)</p>');
-    } else {
-	  document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + '</p>');
-    }
+  if (list.height > 1.9) {
+    document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + ' (Wow, that\'s big!)</p>');
+  } else {
+	document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + '</p>');
+  }
 });
- */
