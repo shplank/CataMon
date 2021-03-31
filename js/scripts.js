@@ -31,6 +31,7 @@ let pokemonRepository = (function () {
   			alert('Please try again!');
   		} else {
       pokemonList.push(pokemon);
+      }
     }
   }
 
