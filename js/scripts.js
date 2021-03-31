@@ -24,7 +24,14 @@ let pokemonRepository = (function () {
 	];
 
   function add(pokemon) {
-    pokemonList.push(pokemon);
+  	if (typeof pokemon !== object) {
+  		alert('Please try again!');
+  	} else {
+  		if (typeof pokemon !== Object.keys(pokemonList)) {
+  			alert('Please try again!');
+  		} else {
+      pokemonList.push(pokemon);
+    }
   }
 
   function getAll() {
