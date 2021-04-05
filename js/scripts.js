@@ -1,6 +1,8 @@
-// array of pokemon
+// IIFE
 
 let pokemonRepository = (function () {
+
+// array of pokemon
 
   let pokemonList = [
     { name: "Bulbasaur", height: 0.7, types: ["grass", "poison"]},
@@ -23,6 +25,8 @@ let pokemonRepository = (function () {
 	{ name: "Pidgeot", height: 1.5, types: ["flying", "normal"]}
 	];
 
+// Below allows pokemon to be added to the repository
+
   function add(pokemon) {
   	if (typeof pokemon !== object) {
   		alert('Please try again!');
@@ -35,12 +39,16 @@ let pokemonRepository = (function () {
     }
   }
 
+// Below returns all pokemon in the repository
+
   function getAll() {
     return pokemonList;
   }
 
+// Below logs a pokemon's name
+
   function showDetails(pokemon) {
-	console.log(pokemon);
+	console.log(pokemon.name. pokemon.height, pokemon.types);
   }
 
   function addListItem(pokemon){
@@ -71,13 +79,3 @@ pokemonRepository.getAll().forEach(function(pokemon) {
   pokemonRepository.addListItem(pokemon);
 
 });
-
-// Below: previous code for list
-
-/*  if (list.height > 1.9) {
-    document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + ' (Wow, that\'s big!)</p>');
-  } else {
-	document.write('<p>' + list.name + ' / Height: ' + list.height + ' / Types: ' + list.types.join(', ') + '</p>');
-  }
-});
-*/
