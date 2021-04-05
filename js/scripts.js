@@ -48,7 +48,7 @@ let pokemonRepository = (function () {
 // Below logs a pokemon's name
 
   function showDetails(pokemon) {
-	console.log(pokemon.name. pokemon.height, pokemon.types);
+	console.log(pokemon);
   }
 
   function addListItem(pokemon){
@@ -59,7 +59,7 @@ let pokemonRepository = (function () {
     button.classList.add('.pokemonName');
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
-    button.addEventListener('click', function(pokemon) {
+    button.addEventListener('click', function() {
       showDetails(pokemon);
     });
   }
