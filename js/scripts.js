@@ -3,7 +3,7 @@
 let pokemonRepository = (function () {
 
   let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
 // Below allows pokemon to be added to the repository
 
