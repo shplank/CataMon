@@ -8,30 +8,18 @@ let pokemonRepository = (function () {
 // Below allows pokemon to be added to the repository
 
   function add(pokemon) {
-  	if (typeof pokemon !== object) {
-  		alert('Please try again!');
-  	} else {
-  		if (typeof pokemon !== Object.keys(pokemonList)) {
-  			alert('Please try again!');
-  		} else {
+  	if (typeof pokemon === "object" && "name" in pokemon) {
       pokemonList.push(pokemon);
+      } else {
+      	console.log("Please try again");
       }
     }
-  }
 
 // Below returns all pokemon in the repository
 
   function getAll() {
     return pokemonList;
   }
-
-// Below logs a pokemon's name
-
-function showDetails(pokemon) {
-  loadDetails(pokemon).then(function () {
-    console.log(pokemon);
-  });
-}
 
   function addListItem(pokemon){
     let pokemonList = document.querySelector('.pokemon-list');
@@ -56,6 +44,7 @@ function showDetails(pokemon) {
           detailsUrl: item.url
         };
         add(pokemon);
+        console.log(pokemon);
       });
     }).catch(function (e) {
       console.error(e);
@@ -67,7 +56,6 @@ function showDetails(pokemon) {
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
-      // Now we add the details to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
@@ -76,18 +64,28 @@ function showDetails(pokemon) {
     });
   }
 
+  // Below logs a pokemon's name
+
+  function showDetails(item) {
+	pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
+    });
+  }
+
+
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
-    showDetails: showDetails,
     loadList: loadList,
-    loadDetails: loadDetails
+    loadDetails: loadDetails,
+    showDetails: showDetails
   };
 })();
 
+// Below loads the list from the API
+
 pokemonRepository.loadList().then(function() {
-  // Now the data is loaded!
   pokemonRepository.getAll().forEach(function(pokemon){
     pokemonRepository.addListItem(pokemon);
   });
