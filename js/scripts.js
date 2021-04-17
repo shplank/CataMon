@@ -1,6 +1,6 @@
 // IIFE
 
-let pokemonRepository = (function () {
+let pokemonRepository = (function(){
 
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
@@ -10,8 +10,6 @@ let pokemonRepository = (function () {
   function add(pokemon) {
   	if (typeof pokemon === "object" && "name" in pokemon) {
       pokemonList.push(pokemon);
-      } else {
-      	console.log("Please try again");
       }
     }
 
@@ -71,15 +69,15 @@ let pokemonRepository = (function () {
 
 // below creates a modal with pokemon info
 
-  function showDetails(item) {
-	pokemonRepository.loadDetails(item).then(function () {
-		showModal(item);
+  function showDetails(pokemon) {
+	pokemonRepository.loadDetails(pokemon).then(function () {
+		showModal(pokemon);
 	});
   }
 
   let modalContainer = document.querySelector('#modal-container');
 
-  function showModal(title, text) {
+function showModal(pokemon) {
 	modalContainer.innerHTML = '';
 
 	let modal = document.createElement('div');
@@ -90,18 +88,18 @@ let pokemonRepository = (function () {
     closeButtonElement.innerText = 'Close';
     closeButtonElement.addEventListener('click', hideModal);
 
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = title;
+    let nameElement = document.createElement('h1');
+    nameElement.innerText = pokemon.name;
 
-    let contentElement = document.createElement('p');
-    contentElement.innerText = text;
+    let heightElement = document.createElement('p');
+    heightElement.innerText = "Height: " + pokemon.height;
 
     let imageElement = document.createElement('img');
-    imageElement.src = 
+    imageElement.src = pokemon.imageUrl;
 
     modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(contentElement);
+    modal.appendChild(nameElement);
+    modal.appendChild(heightElement);
     modal.appendChild(imageElement);
     modalContainer.appendChild(modal);
 
@@ -112,10 +110,6 @@ let pokemonRepository = (function () {
 
 function hideModal() {
   modalContainer.classList.remove('is-visible');
-  if (dialogPromiseReject) {
-  	dialogPromiseReject();
-  	dialogPromiseReject = null;
-  }
 }
 
 window.addEventListener('keydown', (e) => {
