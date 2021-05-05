@@ -62,7 +62,8 @@ let pokemonRepository = (function(){
     let button = document.createElement('button');
     button.innerText = pokemon.name;
     button.classList.add('btn', 'btn-primary', 'btn-block');
-    button.setAttribute('data-target', '#pokeModal', 'data-toggle', 'modal');
+    button.setAttribute('data-target','#pokeModal');
+    button.setAttribute('data-toggle','modal');
     pokemonList.appendChild(listItem);
     listItem.appendChild(button);
     button.addEventListener('click', function(event) {
@@ -102,7 +103,7 @@ function showModal(pokemon) {
     let typesElement = document.createElement('p');
     let types = 'Type(s): ';
     pokemon.types.forEach(function(item) {
-      types += '<p>' + item.type.name + '</p>';
+      types += '<span>' + item.type.name + " " + '</span>';
     });
     typesElement.innerHTML = types;
     

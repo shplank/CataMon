@@ -16,6 +16,10 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
+  background-image: url(https://cdn.statically.io/img/wallpaperplay.com/walls/full/7/4/a/127434.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   background-color: #ffe582;
   color: #000;
 }
@@ -27,4 +31,11 @@ body {
 .list-group {
   max-width: 250px;
   margin: auto;
+}
+
+img {
+  width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
