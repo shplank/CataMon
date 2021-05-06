@@ -11,8 +11,14 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-color: #ffe582;
+  background-color: #79c9fa;
   color: #000;
+}
+
+.navbar-brand.navbar-center {
+  position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .page-container {
