@@ -112,8 +112,6 @@ function showModal(pokemon) {
     modalBody.append(heightElement);
     modalBody.append(weightElement);
     modalBody.append(typesElement);
-
-	modalContainer.classList.add('is-visible');
   }
 
 // functions assigned self-named keys
