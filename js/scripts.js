@@ -48,6 +48,7 @@ let pokemonRepository = (function(){
       item.height = details.height;
       item.weight = details.weight;
       item.types = [...details.types];
+      item.abilities = [...details.abilities];
     }).catch(function (e) {
       console.error(e);
     });
@@ -92,7 +93,7 @@ function showModal(pokemon) {
     nameElement.innerText = pokemon.name;
 
     let imageElement = document.createElement('img');
-    imageElement.src = pokemon.imageUrl;
+    imageElement.srcset = pokemon.imageUrl;
 
     let heightElement = document.createElement('p');
     heightElement.innerText = "Height: " + (pokemon.height / 10) + " m";
@@ -106,13 +107,33 @@ function showModal(pokemon) {
       types += '<span>' + item.type.name + " " + '</span>';
     });
     typesElement.innerHTML = types;
+
+    let abilitiesElement = document.createElement('p');
+    let abilities = 'Abilities: ';
+    pokemon.abilities.forEach(function(item) {
+      abilities += '<span>' + item.ability.name + " " + '</span>';
+    });
+    abilitiesElement.innerHTML = abilities;
     
     modalTitle.append(nameElement);
     modalBody.append(imageElement);
     modalBody.append(heightElement);
     modalBody.append(weightElement);
     modalBody.append(typesElement);
+    modalBody.append(abilitiesElement);
   }
+
+let searchInput = document.querySelector("#search-input");
+
+searchInput.addEventListener("keyup", e => {
+  let searchString = e.target.value;
+  let filteredPokemon = pokemonList.filter(pokemon => {
+    return (
+      pokemon.name.toLowerCase().includes(searchString)
+    );
+  });
+  console.log(filteredPokemon);
+});
 
 // functions assigned self-named keys
 

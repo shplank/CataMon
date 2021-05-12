@@ -21,24 +21,17 @@
 <!-- navbar stuff below -->
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #79c9fa;">
-      <a class="navbar-brand navbar-center" href="#">
-        <img src="images/CataMon-logo-transparent.png" class="d-inline-block align-top" style="width:120px;" alt="CataMon logo">
+      <a class="navbar-brand" href="#">
+        <img src="images/CataMon-logo-transparent.png" class="align-top" style="width:140px;" alt="CataMon logo">
       </a>
+      <span class="navbar-text mr-3">Pokédex </span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+
+        <form class="form-inline navbar-right my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" id="search-input" placeholder="search by name" aria-label="Search">
         </form>
       </div>
     </nav>
@@ -61,7 +54,6 @@
           <div class="modal-body"></div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
