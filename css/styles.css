@@ -11,21 +11,17 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  background-image: url(https://cdn.statically.io/img/wallpaperplay.com/walls/full/7/4/a/127434.jpg);
+  background-image: url(https://wallpapercave.com/wp/UTEF6XR.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-color: #79c9fa;
+  background-color: #FFF;
   color: #000;
-}
-
-.page-container {
-  margin-top: 100px;
 }
 
 .list-group {
   max-width: 250px;
-  margin-top: 100px;
+  margin-top: 80px;
   margin-right: auto;
   margin-left: auto;
 }
