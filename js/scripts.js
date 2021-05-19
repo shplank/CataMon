@@ -2,18 +2,10 @@
 
 let pokemonRepository = (function(){
 
-  let pokemonList = [];
+  let pokemonArray = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
-// below allows pokemon to be added to the repository
-
-  function add(pokemon) {
-    if (typeof pokemon === 'object' && 'name' in pokemon) {
-      pokemonList.push(pokemon);
-      }
-    }
-
-// below loads items from the API
+// below loads pokemon names and urls from the API
 
   function loadList() {
     return fetch(apiUrl).then(function (response) {
@@ -31,30 +23,25 @@ let pokemonRepository = (function(){
     });
   }
 
-// below returns all pokemon in the repository
+// below adds pokemon to the repository
+
+  function add(pokemon) {
+    if (typeof pokemon === 'object' && 'name' in pokemon) {
+      pokemonArray.push(pokemon);
+      }
+    }
+
+// below returns all pokemon in the repository as array
 
   function getAll() {
-    return pokemonList;
+    return pokemonArray;
   }
 
-// below allows search input to provide values
+// below creates list items from array as buttons
 
-  let searchInput = document.querySelector('#search-input');
-
-  searchInput.addEventListener('keyup', e => {
-    let searchString = e.target.value;
-    let filteredPokemon = pokemonList.filter(pokemon => {
-      return (
-        pokemon.name.toLowerCase().includes(searchString)
-      );
-    });
-    console.log(filteredPokemon);
-  });
-
-// below creates list items as buttons
+let pokemonList = document.querySelector('.list-group');
 
   function addListItem(pokemon){
-    let pokemonList = document.querySelector('.list-group');
     let listItem = document.createElement('li');
     listItem.classList.add('list-group-item', 'list-group-item-action');
     let button = document.createElement('button');
@@ -64,10 +51,18 @@ let pokemonRepository = (function(){
     button.setAttribute('data-toggle','modal');
     pokemonList.appendChild(listItem);
     listItem.appendChild(button);
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', function() {
       showDetails(pokemon);
     });
   }
+
+// below creates a modal with pokemon info
+
+  function showDetails(pokemon) {
+    pokemonRepository.loadDetails(pokemon).then(function () {
+      showModal(pokemon);
+    });
+    }
 
 // Below returns details from the API
 
@@ -86,18 +81,12 @@ let pokemonRepository = (function(){
     });
   }
 
-// below creates a modal with pokemon info
-
-  function showDetails(pokemon) {
-  pokemonRepository.loadDetails(pokemon).then(function () {
-    showModal(pokemon);
-  });
-  }
-
 //  below fills the modal with pokemon details
 
 function showModal(pokemon) {
+  // eslint-disable-next-line no-undef
   let modalBody = $('.modal-body');
+  // eslint-disable-next-line no-undef
   let modalTitle = $('.modal-title');
   modalTitle.empty();
   modalBody.empty();
@@ -135,6 +124,29 @@ function showModal(pokemon) {
     modalBody.append(typesElement);
     modalBody.append(abilitiesElement);
   }
+
+    // below allows search input to provide value
+
+    let searchInput = document.querySelector('#search-input');
+    let listGroup = document.querySelectorAll('.list-group-item');
+
+    searchInput.addEventListener('keyup', e => {
+      let searchString = e.target.value.toLowerCase();
+      let filteredPokemon = pokemonArray.filter(pokemon => {
+        return (pokemon.name.toLowerCase().includes(searchString));
+    });
+      console.log(filteredPokemon);
+
+      listGroup.forEach(function() {
+        let button = document.querySelector('.button');
+        let buttonText = button.innerText;
+          if (buttonText.toLowerCase().indexOf(filteredPokemon) > -1) {
+        listGroup.style.display = '';
+        } else {
+        listGroup.style.display = 'none';
+        }
+      });
+    });
 
 // functions assigned self-named keys
 
