@@ -3,7 +3,7 @@
 let pokemonRepository = (function(){
 
   let pokemonArray = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
 // below loads pokemon names and urls from the API
 
@@ -84,9 +84,7 @@ let pokemonList = document.querySelector('.list-group');
 //  below fills the modal with pokemon details
 
 function showModal(pokemon) {
-  // eslint-disable-next-line no-undef
   let modalBody = $('.modal-body');
-  // eslint-disable-next-line no-undef
   let modalTitle = $('.modal-title');
   modalTitle.empty();
   modalBody.empty();
@@ -128,24 +126,18 @@ function showModal(pokemon) {
     // below allows search input to provide value
 
     let searchInput = document.querySelector('#search-input');
-    let listGroup = document.querySelectorAll('.list-group-item');
 
-    searchInput.addEventListener('keyup', e => {
-      let searchString = e.target.value.toLowerCase();
-      let filteredPokemon = pokemonArray.filter(pokemon => {
-        return (pokemon.name.toLowerCase().includes(searchString));
-    });
-      console.log(filteredPokemon);
+     searchInput.addEventListener('input', function(){
+        let listGroup = document.querySelectorAll('.list-group-item');
+        let value = searchInput.value.toLowerCase();
 
-      listGroup.forEach(function() {
-        let button = document.querySelector('.button');
-        let buttonText = button.innerText;
-          if (buttonText.toLowerCase().indexOf(filteredPokemon) > -1) {
-        listGroup.style.display = '';
-        } else {
-        listGroup.style.display = 'none';
-        }
-      });
+        listGroup.forEach(function(pokemon){
+            if(pokemon.innerText.toLowerCase().indexOf(value) > -1){
+                pokemon.style.display = '';
+            }else{
+                pokemon.style.display = 'none';
+            }
+        });
     });
 
 // functions assigned self-named keys
