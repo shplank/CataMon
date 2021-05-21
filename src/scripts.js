@@ -5,7 +5,7 @@ let pokemonRepository = (function(){
   let pokemonArray = [];
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
-// below loads pokemon names and urls from the API
+/* below loads pokemon names and urls from the API */
 
   function loadList() {
     return fetch(apiUrl).then(function (response) {
@@ -23,7 +23,7 @@ let pokemonRepository = (function(){
     });
   }
 
-// below adds pokemon to the repository
+/* below adds pokemon to the repository and confirms they are objects */
 
   function add(pokemon) {
     if (typeof pokemon === 'object' && 'name' in pokemon) {
@@ -31,13 +31,13 @@ let pokemonRepository = (function(){
       }
     }
 
-// below returns all pokemon in the repository as array
+/* below returns all pokemon in the repository as array */
 
   function getAll() {
     return pokemonArray;
   }
 
-// below creates list items from array as buttons
+/* below creates list items from array as buttons with pokemon names as text */
 
 let pokemonList = document.querySelector('.list-group');
 
@@ -56,7 +56,7 @@ let pokemonList = document.querySelector('.list-group');
     });
   }
 
-// below creates a modal with pokemon info
+/* below creates a modal with pokemon info */
 
   function showDetails(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
@@ -64,7 +64,7 @@ let pokemonList = document.querySelector('.list-group');
     });
     }
 
-// Below returns details from the API
+/* Below returns details about each pokemon from the API */
 
   function loadDetails(item) {
     let url = item.detailsUrl;
@@ -81,13 +81,13 @@ let pokemonList = document.querySelector('.list-group');
     });
   }
 
-//  below fills the modal with pokemon details
+/*  below fills the modal with pokemon image and details */
 
-function showModal(pokemon) {
-  let modalBody = $('.modal-body');
-  let modalTitle = $('.modal-title');
-  modalTitle.empty();
-  modalBody.empty();
+  function showModal(pokemon) {
+    let modalBody = $('.modal-body');
+    let modalTitle = $('.modal-title');
+    modalTitle.empty();
+    modalBody.empty();
 
     let nameElement = document.createElement('h1');
     nameElement.innerText = pokemon.name;
@@ -123,24 +123,24 @@ function showModal(pokemon) {
     modalBody.append(abilitiesElement);
   }
 
-    // below allows search input to provide value
+/* below allows search input to filter pokemon names displayed in the list */
 
-    let searchInput = document.querySelector('#search-input');
+  let searchInput = document.querySelector('#search-input');
 
-     searchInput.addEventListener('input', function(){
-        let listGroup = document.querySelectorAll('.list-group-item');
-        let value = searchInput.value.toLowerCase();
+  searchInput.addEventListener('input', function(){
+    let listGroup = document.querySelectorAll('.list-group-item');
+    let value = searchInput.value.toLowerCase();
 
-        listGroup.forEach(function(pokemon){
-            if(pokemon.innerText.toLowerCase().indexOf(value) > -1){
-                pokemon.style.display = '';
-            }else{
-                pokemon.style.display = 'none';
-            }
-        });
+    listGroup.forEach(function(pokemon){
+        if(pokemon.innerText.toLowerCase().indexOf(value) > -1){
+            pokemon.style.display = '';
+        }else{
+            pokemon.style.display = 'none';
+        }
     });
+});
 
-// functions assigned self-named keys
+/* functions assigned self-named keys */
 
   return {
     add: add,
@@ -153,7 +153,7 @@ function showModal(pokemon) {
   };
 })();
 
-// Below loads the list from the API
+/* Below loads the list from the API */
 
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon){
